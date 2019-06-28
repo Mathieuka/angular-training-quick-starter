@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HEROES } from '../mock-heroes';
-import { Hero } from "../Hero";
+import { Hero } from '../Hero';
+
+//import service
+import { HeroService } from '../hero.service';
 
 
 @Component({
@@ -12,11 +14,19 @@ import { Hero } from "../Hero";
 
 export class HeroesComponent implements OnInit {
    selectedHero: Hero;
-   heroes = HEROES; 
+   heroes; 
    
-   constructor() { }
+   constructor(
+      private HeroService: HeroService, // inject HeroService  NOTE: When Angular creates a HeroesComponent, the Dependency Injection system sets 
+                                                                   //the heroService parameter to the singleton instance of HeroService.
+   ) { }
   
    ngOnInit() {
+     this.getHeroes();
+   }
+
+   getHeroes = (): void =>{
+     this.HeroService.getHeroes().subscribe(heroes => this.heroes = heroes); // here we subscribe to the observable in hero.service.ts
    }
 
    onSelect(hero: Hero): void{

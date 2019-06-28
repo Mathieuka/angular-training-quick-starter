@@ -1,19 +1,13 @@
-    <div *ngIf="selectedHero">
-        <h2>{{selectedHero.name | uppercase}}</h2>
-        <div>
-            <span>id: </span>
-            {{selectedHero.id}}
-        </div>
-        <div>
-            <label>name:
-                <input [(ngModel)]="selectedHero.name" placeholder="name"/>
-            </label>
-        </div>
-    </div>
-
-    <ul class="heroes">
-        <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
-            <span class="badge">{{hero.id}}</span> {{hero.name}}
+   <ul class="heroes">
+        <!-- NOTE: we can use [class.selected] for specify some CSS style comportment -->
+        <!-- NOTE: example => When the current row hero is the same as the selectedHero, Angular adds the selected CSS class. 
+                              When the two heroes are different, Angular removes the class. -->
+        <li 
+        *ngFor="let hero of heroes; index as heroId" 
+        (click)="onSelect(hero)" 
+        [class.selected]="hero === selectedHero"> 
+            <span class="badge" [routerLink]="['/heroes' , hero.id]">{{hero.id}}</span>{{hero.name}}
         </li>
     </ul>
+    <app-hero-detail [hero]="selectedHero"></app-hero-detail>
  
