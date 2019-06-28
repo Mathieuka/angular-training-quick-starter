@@ -1,7 +1,19 @@
-<div>
-    <label>name:
-        <!-- for use the binding (ngModel) we need to import FormsModule in app.module.ts -->
-        <!--  NOTE: The most important @NgModule decorator annotates the top-level AppModule class.  -->
-        <input [(ngModel)]="hero.name" placeholder="name"/> 
-    </label>
-</div>
+    <div *ngIf="selectedHero">
+        <h2>{{selectedHero.name | uppercase}}</h2>
+        <div>
+            <span>id: </span>
+            {{selectedHero.id}}
+        </div>
+        <div>
+            <label>name:
+                <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+            </label>
+        </div>
+    </div>
+
+    <ul class="heroes">
+        <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+        </li>
+    </ul>
+ 
