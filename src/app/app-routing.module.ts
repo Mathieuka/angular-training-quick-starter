@@ -6,7 +6,8 @@ import { routes } from './route';
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes) // initialize the router and start it listening for browser location changes.
+                                 // The method is called forRoot() because you configure the router at the application's root level.
   ],
   exports: [RouterModule]
 })

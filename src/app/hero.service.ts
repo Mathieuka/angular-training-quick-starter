@@ -21,4 +21,10 @@ export class HeroService {
     this.messageService.add('HeroService: fetched heroes'); 
     return of(HEROES); // of(HEROES) returns an Observable<Hero[]> that emits a single value, the array of mock heroes.
   }
+
+  //This asynchronous approach will work when the HeroService requests heroes from the server.
+  getHero(id: number): Observable<Hero>{
+    this.messageService.add(`HeroService => fetched the hero with the id=${id}`);
+    return of(HEROES.find(hero => hero.id === id));
+  }
 }

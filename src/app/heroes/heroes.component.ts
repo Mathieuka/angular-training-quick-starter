@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../Hero';
+
 
 //import service
 import { HeroService } from '../hero.service';
@@ -13,7 +13,7 @@ import { HeroService } from '../hero.service';
 
 
 export class HeroesComponent implements OnInit {
-   selectedHero: Hero;
+
    heroes; 
    
    constructor(
@@ -29,8 +29,5 @@ export class HeroesComponent implements OnInit {
      this.HeroService.getHeroes().subscribe(heroes => this.heroes = heroes); // here we subscribe to the observable in hero.service.ts
    }
 
-   onSelect(hero: Hero): void{
-     this.selectedHero = hero;
-   }
 
 }
