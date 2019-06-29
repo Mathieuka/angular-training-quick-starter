@@ -22,7 +22,7 @@ export class HeroesComponent implements OnInit {
    ) { }
   
    ngOnInit() {
-     this.getHeroes();
+     this.getHeroes(); // here we get the heroes just before the app mount
    }
 
    getHeroes = (): void =>{
